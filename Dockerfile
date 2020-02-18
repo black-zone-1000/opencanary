@@ -5,10 +5,12 @@ RUN apk update \
 && apk add bash
 SHELL ["/bin/bash", "-c"]
 
-RUN apk add bash python2 py2-pip py2-virtualenv sudo openssl libffi libpcap
+RUN apk add bash python2 py2-pip sudo openssl libffi libpcap
 RUN apk add --virtual .build-deps python2-dev libffi-dev openssl-dev libpcap-dev \
 musl-dev libc-dev
 RUN apk add libgcc libstdc++ iptables g++ gcc
+
+RUN pip install virtualenv
 
 RUN pip install --upgrade pip \
 && virtualenv env/ \
